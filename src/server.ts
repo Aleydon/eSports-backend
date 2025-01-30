@@ -1,19 +1,25 @@
-import express, { type Request, type Response } from 'express';
-import cors from 'cors';
-import { UserModel } from '@models/user.model';
+import 'cors';
+
+import express, { Request, Response } from 'express';
 
 const app = express();
 
-app.use(express.json());
-app.use(cors());
-
-const PORT = 3001;
-const { name }: UserModel = new UserModel('Aleydon', 29);
-
-app.get('/', (_req: Request, res: Response) => {
-	res.send('Hello World!');
+app.get('/games', (_req: Request, res: Response) => {
+	return res.json({ message: 'Hello World' });
 });
 
-app.listen(PORT, () => {
-	console.log(`Server runing on localhost://${PORT}, ${name}`);
+app.post('/ads', (_req: Request, res: Response) => {
+	return res.status(201).json([]);
 });
+
+app.get('/games/:gameId/ads', (req: Request, res: Response) => {
+	const { gameId } = req.params;
+
+	return res.send(gameId);
+});
+
+app.get('/ads/:adsID/discord', (req: Request, res: Response) => {
+	return res.status(200).json([]);
+});
+
+app.listen(3333);
