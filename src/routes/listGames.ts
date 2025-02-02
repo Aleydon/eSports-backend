@@ -6,7 +6,11 @@ export const getGames = router.get(
 	'/games',
 	async (_req: Request, res: Response) => {
 		const games = await prisma.game
-			.findMany()
+			.findMany({
+				include: {
+					ads: true
+				}
+			})
 			.then((games) => {
 				return res.status(200).json(games);
 			})
