@@ -1,25 +1,16 @@
+import express from 'express';
 import 'cors';
 
-import express, { Request, Response } from 'express';
+import { getAds } from '@routes/ads';
+import { getDiscord } from '@routes/discord';
+import { getGames } from '@routes/listGames';
+import { createNewAds } from '@routes/newAds';
 
 const app = express();
 
-app.get('/games', (_req: Request, res: Response) => {
-	return res.json({ message: 'Hello World' });
-});
-
-app.post('/ads', (_req: Request, res: Response) => {
-	return res.status(201).json([]);
-});
-
-app.get('/games/:gameId/ads', (req: Request, res: Response) => {
-	const { gameId } = req.params;
-
-	return res.send(gameId);
-});
-
-app.get('/ads/:adsID/discord', (req: Request, res: Response) => {
-	return res.status(200).json([]);
-});
+app.use(getGames);
+app.use(createNewAds);
+app.use(getAds);
+app.use(getDiscord);
 
 app.listen(3333);
