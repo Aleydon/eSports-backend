@@ -8,7 +8,11 @@ export const getGames = router.get(
 		const games = await prisma.game
 			.findMany({
 				include: {
-					ads: true
+					_count: {
+						select: {
+							ads: true
+						}
+					}
 				}
 			})
 			.then((games) => {
