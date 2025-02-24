@@ -16,7 +16,7 @@ export const getGames = router.get(
 				}
 			})
 			.then((games) => {
-				return res.status(200).json(games);
+				return games;
 			})
 			.catch((err) => {
 				return res.status(500).json(err);
