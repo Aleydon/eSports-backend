@@ -5,11 +5,6 @@
 NodeJs: :link: https://nodejs.org/en/
 ---
 
-## :pushpin: Required/Additional Repositories: :pushpin:
-
-API: The project's API is at: https://github.com/Aleydon/eSports-backend.git
-Mobile: Mobile version of the project is at: https://github.com/Aleydon/eSports-mobile.git 
----
 
 #### :arrow_forward: Get Started:
 
